@@ -32,7 +32,7 @@ export function ChangeColor(): JSX.Element {
                         name="color"
                         onChange={updateColor}
                         id={"response-" + color}
-                        key="key"
+                        key={color}
                         label={
                             <div style={{ backgroundColor: color }}>
                                 {color}
@@ -46,7 +46,10 @@ export function ChangeColor(): JSX.Element {
             <br />
             the color is{" "}
             {
-                <span style={{ backgroundColor: selectedColor }}>
+                <span
+                    style={{ backgroundColor: selectedColor }}
+                    data-testid="colored-box"
+                >
                     {selectedColor}
                 </span>
             }

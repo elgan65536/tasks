@@ -17,8 +17,8 @@ export function GiveAttempts(): JSX.Element {
                 <Form.Label>Attempts:</Form.Label>
                 <Form.Control value={attempts} onChange={updateAttempts} />
             </Form.Group>
-            <Button onClick={() => setAttempts(attempts - 1)}>Lose</Button>
-            <Button onClick={() => setAttempts(attempts + 1)}>Gain</Button>
+            <Button onClick={() => setAttempts(attempts - 1)}>use</Button>
+            <Button onClick={() => setAttempts(attempts + 1)}>gain</Button>
             <br />
             {attempts}
         </div>

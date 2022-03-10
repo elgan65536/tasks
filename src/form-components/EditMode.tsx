@@ -5,7 +5,7 @@ type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 export function EditMode(): JSX.Element {
     const [name, setName] = useState<string>("Your Name");
-    const [isStudent, setIsStudent] = useState<boolean>(false);
+    const [isStudent, setIsStudent] = useState<boolean>(true);
     const [editMode, setEditMode] = useState<boolean>(false);
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
