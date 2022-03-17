@@ -1,5 +1,5 @@
 import React from "react";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question } from "../interfaces/question";
 import { MCQuestionView } from "./MCQuestionView";
 import { Quiz } from "./quiz";
 import { SAQuestionView } from "./SAQuestionView";
