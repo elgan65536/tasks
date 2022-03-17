@@ -11,7 +11,7 @@ export interface Quiz {
 export const DEFAULT_QUIZZES: Quiz[] = [
     {
         title: "Math Quiz",
-        description: "tests math skills",
+        description: "tests your math skills",
         questions: [
             {
                 id: 1,
