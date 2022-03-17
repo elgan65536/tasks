@@ -1,4 +1,4 @@
-import { Question, QuestionType } from "../interfaces/question";
+import { Question } from "../interfaces/question";
 
 export {};
 
