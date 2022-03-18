@@ -9,10 +9,14 @@ export {};
 
 export function SAQuestionView({
     expectedAnswer,
-    body
+    body,
+    published,
+    unpublishedVisible
 }: {
     expectedAnswer: string;
     body: string;
+    published: boolean;
+    unpublishedVisible: boolean;
 }): JSX.Element {
     const [answer, setAnswer] = useState<string>("");
     function updateAnswer(event: ChangeEvent) {
@@ -20,11 +24,15 @@ export function SAQuestionView({
     }
     return (
         <div>
-            <Form.Group controlId="formAnswer">
-                <Form.Label>{body}</Form.Label>
-                <Form.Control value={answer} onChange={updateAnswer} />
-            </Form.Group>
-            {answer === expectedAnswer ? "✔️" : "❌"}
+            {(unpublishedVisible || published) && (
+                <div>
+                    <Form.Group controlId="formAnswer">
+                        <Form.Label>{body}</Form.Label>
+                        <Form.Control value={answer} onChange={updateAnswer} />
+                    </Form.Group>
+                    {answer === expectedAnswer ? "✔️" : "❌"}
+                </div>
+            )}
         </div>
     );
 }
