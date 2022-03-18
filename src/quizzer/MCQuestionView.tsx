@@ -8,31 +8,45 @@ type ChangeEvent = React.ChangeEvent<
 export function MCQuestionView({
     options,
     expectedAnswer,
-    body
+    body,
+    published,
+    unpublishedVisible
 }: {
     options: string[];
     expectedAnswer: string;
     body: string;
+    published: boolean;
+    unpublishedVisible: boolean;
 }): JSX.Element {
-    const [answer, setAnswer] = useState<string>(options[0]);
+    const [answer, setAnswer] = useState<string>("Select Answer");
     function updateAnswer(event: ChangeEvent) {
         setAnswer(event.target.value);
     }
     return (
         <div>
-            <Form.Group controlId="userOptions">
-                <Form.Label>{body}</Form.Label>
-                <Form.Select value={answer} onChange={updateAnswer}>
-                    {options.map(
-                        (option: string): JSX.Element => (
-                            <option value={option} key={option}>
-                                {option}
+            {(unpublishedVisible || published) && (
+                <div>
+                    <Form.Group controlId="userOptions">
+                        <Form.Label>{body}</Form.Label>
+                        <Form.Select value={answer} onChange={updateAnswer}>
+                            <option
+                                value={"Select Answer"}
+                                key={"Select Answer"}
+                            >
+                                Select Answer
                             </option>
-                        )
-                    )}
-                </Form.Select>
-            </Form.Group>
-            {answer === expectedAnswer ? "✔️" : "❌"}
+                            {options.map(
+                                (option: string): JSX.Element => (
+                                    <option value={option} key={option}>
+                                        {option}
+                                    </option>
+                                )
+                            )}
+                        </Form.Select>
+                    </Form.Group>
+                    {answer === expectedAnswer ? "✔️" : "❌"}
+                </div>
+            )}
         </div>
     );
 }

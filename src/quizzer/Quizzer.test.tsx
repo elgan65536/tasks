@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Quizzer } from "./Quizzer";
 
 describe("Quizzer Tests", () => {
@@ -7,6 +7,6 @@ describe("Quizzer Tests", () => {
         render(<Quizzer />);
     });
     test("The Quizzer renders", () => {
-        //expect(screen.findByText("Quizzer")).toBeInTheDocument;
+        expect(screen.findByText("Quizzer")).toBeInTheDocument;
     });
 });

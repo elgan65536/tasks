@@ -32,13 +32,40 @@ export const DEFAULT_QUIZZES: Quiz[] = [
                 expected: "216",
                 points: 10,
                 published: true
+            },
+            {
+                id: 3,
+                name: "triangle question",
+                body: "one side of a triangle is 3 inches long. The angle of the vertex opposite this side is 30 degrees. What is the diameter, in inches, of a circle that touches all three of the triangle's vertices?",
+                type: "short_answer_question",
+                options: [],
+                expected: "6",
+                points: 10,
+                published: false
             }
         ]
     },
     {
         title: "History Quiz",
         description: "tests your knowledge of history",
-        questions: []
+        questions: [
+            {
+                id: 1,
+                name: "president question",
+                body: "who is the second president of the United States?",
+                type: "multiple_choice_question",
+                options: [
+                    "Washington",
+                    "Adams",
+                    "Jefferson",
+                    "Lincoln",
+                    "Obama"
+                ],
+                expected: "Adams",
+                points: 6,
+                published: true
+            }
+        ]
     },
     {
         title: "English Quiz",
@@ -50,7 +77,7 @@ export const DEFAULT_QUIZZES: Quiz[] = [
                 name: "alphabet question",
                 body: "What is the second letter of the alphabet?",
                 type: "multiple_choice_question",
-                options: ["A", "B", "C", "D"],
+                options: ["A", "B", "C", "D", "🅱"],
                 expected: "B",
                 points: 3,
                 published: true

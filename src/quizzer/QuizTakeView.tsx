@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Question } from "../interfaces/question";
 import { MCQuestionView } from "./MCQuestionView";
 import { Quiz } from "./quiz";
@@ -9,11 +10,20 @@ export function QuizTakeView(
     selectedQuiz: Quiz,
     mode: "take" | "edit" | null
 ): JSX.Element {
+    const [unpublishedVisible, setUnpublishedVisible] = useState<boolean>(true);
     return (
         <div>
             {quiz === selectedQuiz && mode === "take" && (
                 <div>
                     <h3>{quiz.title}</h3>
+                    <Button
+                        onClick={() =>
+                            setUnpublishedVisible(!unpublishedVisible)
+                        }
+                    >
+                        {unpublishedVisible && "Hide"}
+                        {!unpublishedVisible && "Show"} unpublished questions
+                    </Button>
                     {quiz.questions.map(
                         (question: Question): JSX.Element =>
                             question.type === "multiple_choice_question" ? (
@@ -21,12 +31,16 @@ export function QuizTakeView(
                                     options={question.options}
                                     expectedAnswer={question.expected}
                                     body={question.body}
+                                    published={question.published}
+                                    unpublishedVisible={unpublishedVisible}
                                     key={question.name + " view"}
                                 />
                             ) : (
                                 <SAQuestionView
                                     expectedAnswer={question.expected}
                                     body={question.body}
+                                    published={question.published}
+                                    unpublishedVisible={unpublishedVisible}
                                     key={question.name + " view"}
                                 />
                             )
