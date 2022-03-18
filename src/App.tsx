@@ -17,9 +17,11 @@ import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion
 import { ChangeColor } from "./form-components/ChangeColor";
 import { Quizzer } from "./quizzer/Quizzer";
 import { Button } from "react-bootstrap";
+import ApplicationSketch from "./ApplicationSketch.png";
 
 function App(): JSX.Element {
     const [oldTasks, setOldTasks] = useState<boolean>(false);
+    const [sketch, setSketch] = useState<boolean>(false);
     return (
         <div className="App">
             <header className="App-header">
@@ -27,10 +29,12 @@ function App(): JSX.Element {
             </header>
             <Quizzer></Quizzer>
             <hr />
-            <Button onClick={() => setOldTasks(!oldTasks)}>
-                {oldTasks && "Hide"}
-                {!oldTasks && "Show"} Old Tasks
+            {sketch && <img src={ApplicationSketch}></img>} <br />
+            <Button onClick={() => setSketch(!sketch)}>
+                {sketch && "Hide"}
+                {!sketch && "Show"} Sketch
             </Button>
+            <br />
             {oldTasks && (
                 <div>
                     <CheckAnswer expectedAnswer="42"></CheckAnswer>
@@ -67,6 +71,11 @@ function App(): JSX.Element {
                     <CycleHoliday></CycleHoliday>
                 </div>
             )}
+            <br />
+            <Button onClick={() => setOldTasks(!oldTasks)}>
+                {oldTasks && "Hide"}
+                {!oldTasks && "Show"} Old Tasks
+            </Button>
         </div>
     );
 }
