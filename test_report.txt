@@ -58,7 +58,7 @@ PASS src/App.test.tsx
           at div
           at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:8:35)
           at div
-          at App (/home/runner/work/tasks/tasks/src/App.tsx:22:37)
+          at App (/home/runner/work/tasks/tasks/src/App.tsx:23:37)
 
       14 |             <Container>
       15 |                 <Row>
@@ -80,9 +80,9 @@ PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   94.39 |    82.92 |   92.19 |   94.22 |                   
- src                         |   99.18 |    97.05 |   98.55 |   99.13 |                   
-  App.tsx                    |   66.66 |    66.66 |      50 |   66.66 | 30                
+All files                    |   94.01 |    82.17 |   91.54 |   93.83 |                   
+ src                         |    98.4 |    94.59 |   97.14 |    98.3 |                   
+  App.tsx                    |      60 |    66.66 |   33.33 |      60 | 33-75             
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
   functions.ts               |     100 |      100 |     100 |     100 |                   
   nested.ts                  |     100 |      100 |     100 |     100 |                   
@@ -120,5 +120,5 @@ All files                    |   94.39 |    82.92 |   92.19 |   94.22 |
 Test Suites: 21 passed, 21 total
 Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        13.102 s
+Time:        14.794 s
 Ran all test suites.
