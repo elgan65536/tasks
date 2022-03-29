@@ -20,6 +20,10 @@ export function Quizzer(): JSX.Element {
         return foundQuiz;
     }
 
+    function deleteQuiz(id: number) {
+        setQuizzes(quizzes.filter((quiz: Quiz): boolean => quiz.id !== id));
+    }
+
     return (
         <div>
             <h2>Quizzer</h2>
@@ -32,6 +36,7 @@ export function Quizzer(): JSX.Element {
                                 <QuizListView
                                     key={quiz.id}
                                     quiz={quiz}
+                                    deleteQuiz={deleteQuiz}
                                     setSelectedQuizId={setSelectedQuizId}
                                     setMode={setMode}
                                     setSelectedQuestion={setSelectedQuestion}
@@ -53,6 +58,16 @@ export function Quizzer(): JSX.Element {
                         </Button>
                     </Col>
                     <Col>
+                        {mode !== null && (
+                            <Button
+                                onClick={() => {
+                                    setMode(null);
+                                    setSelectedQuizId(0);
+                                }}
+                            >
+                                Close
+                            </Button>
+                        )}
                         {mode === null && "Select a quiz to display it here"}
                         <QuizTakeView
                             quizzes={quizzes}
