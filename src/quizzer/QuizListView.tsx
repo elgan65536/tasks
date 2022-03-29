@@ -4,6 +4,7 @@ import { Quiz } from "./quiz";
 
 interface quizListProps {
     quiz: Quiz;
+    deleteQuiz: (id: number) => void;
     setSelectedQuizId: (id: number) => void;
     setMode: (mode: "take" | "edit" | null) => void;
     setSelectedQuestion: (selectedQuestion: number) => void;
@@ -11,6 +12,7 @@ interface quizListProps {
 
 export function QuizListView({
     quiz,
+    deleteQuiz,
     setSelectedQuizId,
     setMode,
     setSelectedQuestion
@@ -34,13 +36,21 @@ export function QuizListView({
                 disabled={quiz.questions.length === 0}
             >
                 Take Quiz
-            </Button>
+            </Button>{" "}
             <Button
                 onClick={() => {
                     setSelectedQuizId(quiz.id), setMode("edit");
                 }}
             >
                 Edit Quiz
+            </Button>{" "}
+            <Button
+                style={{ backgroundColor: "red" }}
+                onClick={() => {
+                    deleteQuiz(quiz.id), setMode(null);
+                }}
+            >
+                Delete Quiz
             </Button>
         </div>
     );
