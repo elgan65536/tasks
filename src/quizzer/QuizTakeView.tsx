@@ -1,50 +1,77 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Question } from "../interfaces/question";
 import { MCQuestionView } from "./MCQuestionView";
 import { Quiz } from "./quiz";
 import { SAQuestionView } from "./SAQuestionView";
 
-export function QuizTakeView(
-    quiz: Quiz,
-    selectedQuiz: Quiz,
-    mode: "take" | "edit" | null
-): JSX.Element {
+interface quizTakeViewProps {
+    quizzes: Quiz[];
+    selectedQuizId: number;
+    mode: "take" | "edit" | null;
+    selectedQuestion: number;
+    setSelectedQuestion: (newSeleted: number) => void;
+}
+
+export function QuizTakeView({
+    quizzes,
+    selectedQuizId,
+    mode,
+    selectedQuestion,
+    setSelectedQuestion
+}: quizTakeViewProps): JSX.Element {
     const [unpublishedVisible, setUnpublishedVisible] = useState<boolean>(true);
+    function findQuiz(): Quiz {
+        const foundQuiz = quizzes.find(
+            (quiz: Quiz): boolean => quiz.id === selectedQuizId
+        );
+        if (foundQuiz === undefined) {
+            return { id: 0, title: "", description: "", questions: [] };
+        }
+        return foundQuiz;
+    }
     return (
         <div>
-            {quiz === selectedQuiz && mode === "take" && (
+            {mode === "take" && (
                 <div>
-                    <h3>{quiz.title}</h3>
+                    <h3>{findQuiz().title}</h3>
                     <Button
                         onClick={() =>
                             setUnpublishedVisible(!unpublishedVisible)
                         }
                     >
                         {unpublishedVisible && "Hide"}
-                        {!unpublishedVisible && "Show"} unpublished questions
+                        {!unpublishedVisible && "Show"} Unpublished Questions
                     </Button>
-                    {quiz.questions.map(
-                        (question: Question): JSX.Element =>
-                            question.type === "multiple_choice_question" ? (
-                                <MCQuestionView
-                                    options={question.options}
-                                    expectedAnswer={question.expected}
-                                    body={question.body}
-                                    published={question.published}
-                                    unpublishedVisible={unpublishedVisible}
-                                    key={question.name + " view"}
-                                />
-                            ) : (
-                                <SAQuestionView
-                                    expectedAnswer={question.expected}
-                                    body={question.body}
-                                    published={question.published}
-                                    unpublishedVisible={unpublishedVisible}
-                                    key={question.name + " view"}
-                                />
-                            )
-                    )}
+                    <br />
+                    {!findQuiz().questions[selectedQuestion].published &&
+                        !unpublishedVisible &&
+                        "this question is unPublished."}
+                    <SAQuestionView
+                        question={findQuiz().questions[selectedQuestion]}
+                        unPublishedVisible={unpublishedVisible}
+                    />
+                    <MCQuestionView
+                        question={findQuiz().questions[selectedQuestion]}
+                        unPublishedVisible={unpublishedVisible}
+                    />
+                    <Button
+                        onClick={() =>
+                            setSelectedQuestion(selectedQuestion - 1)
+                        }
+                        disabled={selectedQuestion === 0}
+                    >
+                        {"<-"} Previous Question
+                    </Button>
+                    <Button
+                        onClick={() =>
+                            setSelectedQuestion(selectedQuestion + 1)
+                        }
+                        disabled={
+                            selectedQuestion === findQuiz().questions.length - 1
+                        }
+                    >
+                        Next Question {"->"}
+                    </Button>
                 </div>
             )}
         </div>
