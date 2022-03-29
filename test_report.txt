@@ -22,65 +22,11 @@ PASS src/components/RevealAnswer.test.tsx
 PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
 PASS src/quizzer/Quizzer.test.tsx
-  ● Console
-
-    console.error
-      Warning: Each child in a list should have a unique "key" prop.
-      
-      Check the render method of `Quizzer`. See https://reactjs.org/link/warning-keys for more information.
-          at div
-          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:8:35)
-
-      14 |             <Container>
-      15 |                 <Row>
-    > 16 |                     <Col>
-         |                     ^
-      17 |                         <h3>Quizzes</h3>
-      18 |                         {quizzes.map(
-      19 |                             (quiz: Quiz): JSX.Element =>
-
-      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
-      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
-      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
-      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
-      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
-      at Quizzer (src/quizzer/Quizzer.tsx:16:21)
-      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
-      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
-
 PASS src/App.test.tsx
-  ● Console
-
-    console.error
-      Warning: Each child in a list should have a unique "key" prop.
-      
-      Check the render method of `Quizzer`. See https://reactjs.org/link/warning-keys for more information.
-          at div
-          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:8:35)
-          at div
-          at App (/home/runner/work/tasks/tasks/src/App.tsx:23:37)
-
-      14 |             <Container>
-      15 |                 <Row>
-    > 16 |                     <Col>
-         |                     ^
-      17 |                         <h3>Quizzes</h3>
-      18 |                         {quizzes.map(
-      19 |                             (quiz: Quiz): JSX.Element =>
-
-      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
-      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
-      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
-      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
-      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
-      at Quizzer (src/quizzer/Quizzer.tsx:16:21)
-      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
-      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
-
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   94.01 |    82.17 |   91.54 |   93.83 |                   
+All files                    |   88.44 |    76.64 |   88.35 |   88.11 |                   
  src                         |    98.4 |    94.59 |   97.14 |    98.3 |                   
   App.tsx                    |      60 |    66.66 |   33.33 |      60 | 33-75             
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
@@ -108,17 +54,17 @@ All files                    |   94.01 |    82.17 |   91.54 |   93.83 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |   45.45 |       28 |   33.33 |   45.45 |                   
-  MCQuestionView.tsx         |       0 |        0 |       0 |       0 | 21-40             
-  QuizListView.tsx           |   33.33 |      100 |   33.33 |   33.33 | 21-28             
-  QuizTakeView.tsx           |      50 |    22.22 |   33.33 |      50 | 21-29             
-  Quizzer.tsx                |   85.71 |       75 |      75 |   85.71 | 22                
-  SAQuestionView.tsx         |       0 |        0 |       0 |       0 | 21-25             
+ src/quizzer                 |   30.76 |    18.18 |   21.05 |   30.76 |                   
+  MCQuestionView.tsx         |       0 |        0 |       0 |       0 | 18-42             
+  QuizListView.tsx           |      25 |      100 |   33.33 |      25 | 31-40             
+  QuizTakeView.tsx           |      20 |     9.09 |   16.66 |      20 | 24-30,39-67       
+  Quizzer.tsx                |   43.75 |       50 |      40 |   43.75 | 14-20,43-49       
+  SAQuestionView.tsx         |       0 |        0 |       0 |       0 | 18-22             
   quiz.ts                    |     100 |      100 |     100 |     100 |                   
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 21 passed, 21 total
 Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        14.794 s
+Time:        12.241 s
 Ran all test suites.
