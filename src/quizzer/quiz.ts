@@ -1,15 +1,22 @@
 import { Question } from "../interfaces/question";
 
-export {};
-
 export interface Quiz {
+    id: number;
     questions: Question[];
     title: string;
     description: string;
 }
 
+export const NEW_QUIZ = {
+    id: 0,
+    title: "New Quiz",
+    description: "no description entered",
+    questions: []
+};
+
 export const DEFAULT_QUIZZES: Quiz[] = [
     {
+        id: 1,
         title: "Math Quiz",
         description: "tests your math skills",
         questions: [
@@ -46,11 +53,12 @@ export const DEFAULT_QUIZZES: Quiz[] = [
         ]
     },
     {
+        id: 2,
         title: "History Quiz",
         description: "tests your knowledge of history",
         questions: [
             {
-                id: 1,
+                id: 4,
                 name: "president question",
                 body: "who is the second president of the United States?",
                 type: "multiple_choice_question",
@@ -68,12 +76,13 @@ export const DEFAULT_QUIZZES: Quiz[] = [
         ]
     },
     {
+        id: 3,
         title: "English Quiz",
         description:
             "tests whether or not you know the second letter of the alphabet",
         questions: [
             {
-                id: 1,
+                id: 5,
                 name: "alphabet question",
                 body: "What is the second letter of the alphabet?",
                 type: "multiple_choice_question",

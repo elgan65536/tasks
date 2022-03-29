@@ -2,30 +2,42 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Quiz } from "./quiz";
 
-export function QuizListView(
-    quiz: Quiz,
-    setQuiz: (quiz: Quiz) => void,
-    setMode: (mode: "take" | "edit" | null) => void
-) {
+interface quizListProps {
+    quiz: Quiz;
+    setSelectedQuizId: (id: number) => void;
+    setMode: (mode: "take" | "edit" | null) => void;
+    setSelectedQuestion: (selectedQuestion: number) => void;
+}
+
+export function QuizListView({
+    quiz,
+    setSelectedQuizId,
+    setMode,
+    setSelectedQuestion
+}: quizListProps) {
     return (
         <div>
             <h4>{quiz.title}</h4>
             <b>Description: </b>
             {quiz.description}
             <br />
+            id: {quiz.id}
+            <br />
             {quiz.questions.length} question
             {quiz.questions.length === 1 ? "" : "s"}
             <br />
             <Button
                 onClick={() => {
-                    setQuiz(quiz), setMode("take");
+                    setSelectedQuizId(quiz.id), setMode("take");
+                    setSelectedQuestion(0);
                 }}
+                disabled={quiz.questions.length === 0}
             >
                 Take Quiz
             </Button>
             <Button
                 onClick={() => {
-                    setQuiz(quiz), setMode("edit");
+                    setSelectedQuizId(quiz.id), setMode("edit");
                 }}
             >
                 Edit Quiz
