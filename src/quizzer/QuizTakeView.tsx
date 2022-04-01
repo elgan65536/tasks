@@ -33,7 +33,7 @@ export function QuizTakeView({
         <div>
             {mode === "take" && (
                 <div>
-                    <h3>{findQuiz().title}</h3>
+                    <h3>Taking {findQuiz().title}</h3>
                     <Button
                         onClick={() =>
                             setUnpublishedVisible(!unpublishedVisible)
