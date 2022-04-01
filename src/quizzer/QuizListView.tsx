@@ -29,6 +29,7 @@ export function QuizListView({
             {quiz.questions.length === 1 ? "" : "s"}
             <br />
             <Button
+                data-testid={quiz.title + " Take Button"}
                 onClick={() => {
                     setSelectedQuizId(quiz.id), setMode("take");
                     setSelectedQuestion(0);
@@ -38,6 +39,7 @@ export function QuizListView({
                 Take Quiz
             </Button>{" "}
             <Button
+                data-testid={quiz.title + " Edit Button"}
                 onClick={() => {
                     setSelectedQuizId(quiz.id), setMode("edit");
                 }}
@@ -45,6 +47,7 @@ export function QuizListView({
                 Edit Quiz
             </Button>{" "}
             <Button
+                data-testid={quiz.title + " Delete Button"}
                 style={{ backgroundColor: "red" }}
                 onClick={() => {
                     deleteQuiz(quiz.id), setMode(null);
