@@ -3,25 +3,41 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { Quiz, DEFAULT_QUIZZES, NEW_QUIZ } from "./quiz";
 import { QuizListView } from "./QuizListView";
 import { QuizTakeView } from "./QuizTakeView";
+import { QuizEditView } from "./QuizEditView";
 
 export function Quizzer(): JSX.Element {
     const [quizzes, setQuizzes] = useState<Quiz[]>(DEFAULT_QUIZZES);
     const [selectedQuizID, setSelectedQuizId] = useState<number>(0);
     const [mode, setMode] = useState<"take" | "edit" | null>(null);
     const [nextQuizID, setNextQuizID] = useState<number>(4);
+    //const [nextQuestionID, setNextQuestionID] = useState<number>(7);
     const [selectedQuestion, setSelectedQuestion] = useState<number>(0);
-    function findQuiz(): Quiz {
-        const foundQuiz = quizzes.find(
-            (quiz: Quiz): boolean => quiz.id === selectedQuizID
-        );
-        if (foundQuiz === undefined) {
-            return { id: 0, title: "", description: "", questions: [] };
-        }
-        return foundQuiz;
-    }
+    // function findQuiz(): Quiz {
+    //     const foundQuiz = quizzes.find(
+    //         (quiz: Quiz): boolean => quiz.id === selectedQuizID
+    //     );
+    //     if (foundQuiz === undefined) {
+    //         return { id: 0, title: "", description: "", questions: [] };
+    //     }
+    //     return foundQuiz;
+    // }
 
     function deleteQuiz(id: number) {
         setQuizzes(quizzes.filter((quiz: Quiz): boolean => quiz.id !== id));
+    }
+    function editQuizInfo(id: number, title: string, description: string) {
+        const foundQuiz = quizzes.find((quiz: Quiz): boolean => quiz.id === id);
+        if (foundQuiz === undefined) {
+            return;
+        }
+        const newQuiz = {
+            ...foundQuiz,
+            title: title,
+            description: description
+        };
+        setQuizzes(
+            quizzes.map((quiz: Quiz): Quiz => (quiz.id === id ? newQuiz : quiz))
+        );
     }
 
     return (
@@ -76,7 +92,14 @@ export function Quizzer(): JSX.Element {
                             selectedQuestion={selectedQuestion}
                             setSelectedQuestion={setSelectedQuestion}
                         ></QuizTakeView>
-                        {mode === "edit" && <h3>Editing {findQuiz().title}</h3>}
+                        <QuizEditView
+                            quizzes={quizzes}
+                            selectedQuizId={selectedQuizID}
+                            mode={mode}
+                            selectedQuestion={selectedQuestion}
+                            setSelectedQuestion={setSelectedQuestion}
+                            setQuizInfo={editQuizInfo}
+                        ></QuizEditView>
                     </Col>
                 </Row>
             </Container>
