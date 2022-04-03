@@ -13,9 +13,6 @@ PASS src/bad-components/DoubleHalf.test.tsx
 PASS src/functions.test.ts
 PASS src/form-components/CheckAnswer.test.tsx
 PASS src/form-components/EditMode.test.tsx
-PASS src/components/ChangeType.test.tsx
-PASS src/components/CycleHoliday.test.tsx
-PASS src/form-components/GiveAttempts.test.tsx
 
   ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
     Attempted to log "Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one. ".
@@ -45,28 +42,9 @@ PASS src/quizzer/Quizzer.test.tsx
       at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
       at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
 
-    console.error
-      Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
-
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:67:30)
-      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:43:5)
-      at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
-      at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
-
-    console.error
-      Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
-
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
-      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:67:30)
-      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:43:5)
-      at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
-      at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
-
+PASS src/components/ChangeType.test.tsx
+PASS src/components/CycleHoliday.test.tsx
+PASS src/form-components/GiveAttempts.test.tsx
 PASS src/form-components/ChangeColor.test.tsx
 PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
@@ -76,7 +54,7 @@ PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   86.71 |    76.25 |      86 |   86.69 |                   
+All files                    |   91.79 |    86.01 |    90.5 |   91.89 |                   
  src                         |    98.4 |    94.59 |   97.14 |    98.3 |                   
   App.tsx                    |      60 |    66.66 |   33.33 |      60 | 33-75             
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
@@ -104,17 +82,18 @@ All files                    |   86.71 |    76.25 |      86 |   86.69 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |   27.27 |       20 |   17.39 |    27.9 |                   
-  MCQuestionView.tsx         |       0 |        0 |       0 |       0 | 18-42             
-  QuizListView.tsx           |      20 |      100 |      25 |      20 | 34-53             
-  QuizTakeView.tsx           |      20 |     9.09 |   16.66 |      20 | 24-30,39-67       
-  Quizzer.tsx                |      35 |       50 |      25 |   36.84 | 14-24,48-65       
-  SAQuestionView.tsx         |       0 |        0 |       0 |       0 | 18-22             
+ src/quizzer                 |   64.28 |    61.53 |   58.06 |   64.81 |                   
+  MCQuestionView.tsx         |      75 |    71.42 |   66.66 |      75 | 20                
+  QuizEditView.tsx           |      50 |       75 |   42.85 |      50 | 31,36-39,63-71    
+  QuizListView.tsx           |     100 |      100 |     100 |     100 |                   
+  QuizTakeView.tsx           |      60 |    63.63 |      50 |      60 | 28,39-67          
+  Quizzer.tsx                |   59.09 |       50 |   55.55 |      60 | 29-39,80-81       
+  SAQuestionView.tsx         |   66.66 |    42.85 |      50 |   66.66 | 20                
   quiz.ts                    |     100 |      100 |     100 |     100 |                   
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 21 passed, 21 total
-Tests:       140 passed, 140 total
+Tests:       141 passed, 141 total
 Snapshots:   0 total
-Time:        16.3 s
+Time:        13.209 s
 Ran all test suites.
