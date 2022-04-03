@@ -20,21 +20,27 @@ describe("Quizzer Tests", () => {
     });
     test("Pressing a take button puts the quizzer in take mode", () => {
         const take = screen.getByTestId("Math Quiz Take Button");
-        take.click;
+        take.click();
         expect(screen.findByText("Select a quiz to display it here")).not
             .toBeInTheDocument;
         expect(screen.findByText("Taking Math Quiz")).toBeInTheDocument;
     });
     test("Pressing a edit button puts the quizzer in edit mode", () => {
         const edit = screen.getByTestId("Math Quiz Edit Button");
-        edit.click;
+        edit.click();
         expect(screen.findByText("Select a quiz to display it here")).not
             .toBeInTheDocument;
         expect(screen.findByText("Editing Math Quiz")).toBeInTheDocument;
     });
     test("Pressing a delete button deletes a quiz", () => {
         const deleteb = screen.getByTestId("Math Quiz Delete Button");
-        deleteb.click;
+        deleteb.click();
         expect(screen.findByText("Math Quiz")).not.toBeInTheDocument;
+    });
+    test("new quiz can be added", () => {
+        const add = screen.getByRole("button", { name: /New Quiz/i });
+        add.click();
+        expect(screen.findByText("New Quiz")).toBeInTheDocument;
+        expect(screen.findByText("no description entered")).toBeInTheDocument;
     });
 });
