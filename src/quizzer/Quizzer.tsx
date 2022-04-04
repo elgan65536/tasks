@@ -99,6 +99,7 @@ export function Quizzer(): JSX.Element {
                     <Col>
                         {mode !== null && (
                             <Button
+                                style={{ backgroundColor: "red" }}
                                 onClick={() => {
                                     setMode(null);
                                     setSelectedQuizId(0);
@@ -120,6 +121,7 @@ export function Quizzer(): JSX.Element {
                             selectedQuizId={selectedQuizID}
                             mode={mode}
                             selectedQuestion={selectedQuestion}
+                            setQuizzes={setQuizzes}
                             setSelectedQuestion={setSelectedQuestion}
                             setQuizInfo={editQuizInfo}
                             addQuestion={addQuestion}

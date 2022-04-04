@@ -76,4 +76,20 @@ describe("Quizzer Tests", () => {
         expect(screen.findByText("this question is unPublished.")).not
             .toBeInTheDocument;
     });
+    test("questions can be deleted", () => {
+        const edit = screen.getByTestId("Math Quiz Edit Button");
+        edit.click();
+        const deleteb = screen.getByTestId("Question Delete Button");
+        deleteb.click();
+        expect(screen.findByText("2 questions")).toBeInTheDocument;
+        expect(screen.findByText("3 questions")).not.toBeInTheDocument;
+    });
+    test("questions can be added", () => {
+        const edit = screen.getByTestId("Math Quiz Edit Button");
+        edit.click();
+        const add = screen.getByTestId("Question Add Button");
+        add.click();
+        expect(screen.findByText("4 questions")).toBeInTheDocument;
+        expect(screen.findByText("3 questions")).not.toBeInTheDocument;
+    });
 });

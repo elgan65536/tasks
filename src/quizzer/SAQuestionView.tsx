@@ -26,7 +26,10 @@ export function SAQuestionView({
                     {question.type === "short_answer_question" && (
                         <div>
                             <Form.Group controlId="formAnswer">
-                                <Form.Label>{question.body}</Form.Label>
+                                <Form.Label>
+                                    <b>{question.name}: </b>
+                                    {question.body}
+                                </Form.Label>
                                 <Form.Control
                                     value={answer}
                                     onChange={updateAnswer}

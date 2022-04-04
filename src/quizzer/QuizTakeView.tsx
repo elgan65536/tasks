@@ -64,7 +64,7 @@ export function QuizTakeView({
                         disabled={selectedQuestion === 0}
                     >
                         {"<-"} Previous Question
-                    </Button>
+                    </Button>{" "}
                     <Button
                         data-testId={"Next Button"}
                         onClick={() =>
