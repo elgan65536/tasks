@@ -23,13 +23,12 @@ export function QuizListView({
             <b>Description: </b>
             {quiz.description}
             <br />
-            id: {quiz.id}
-            <br />
             {quiz.questions.length} question
             {quiz.questions.length === 1 ? "" : "s"}
             <br />
             <Button
                 data-testid={quiz.title + " Take Button"}
+                style={{ backgroundColor: "green" }}
                 onClick={() => {
                     setSelectedQuizId(quiz.id), setMode("take");
                     setSelectedQuestion(0);
@@ -40,8 +39,10 @@ export function QuizListView({
             </Button>{" "}
             <Button
                 data-testid={quiz.title + " Edit Button"}
+                style={{ backgroundColor: "orange" }}
                 onClick={() => {
                     setSelectedQuizId(quiz.id), setMode("edit");
+                    setSelectedQuestion(0);
                 }}
             >
                 Edit Quiz

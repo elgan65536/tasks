@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Quiz, DEFAULT_QUIZZES, NEW_QUIZ } from "./quiz";
+import { Quiz, DEFAULT_QUIZZES, NEW_QUIZ, NEW_QUESTION } from "./quiz";
 import { QuizListView } from "./QuizListView";
 import { QuizTakeView } from "./QuizTakeView";
 import { QuizEditView } from "./QuizEditView";
+import { Question } from "../interfaces/question";
 
 export function Quizzer(): JSX.Element {
     const [quizzes, setQuizzes] = useState<Quiz[]>(DEFAULT_QUIZZES);
     const [selectedQuizID, setSelectedQuizId] = useState<number>(0);
     const [mode, setMode] = useState<"take" | "edit" | null>(null);
     const [nextQuizID, setNextQuizID] = useState<number>(4);
-    //const [nextQuestionID, setNextQuestionID] = useState<number>(7);
+    const [nextQuestionID, setNextQuestionID] = useState<number>(7);
     const [selectedQuestion, setSelectedQuestion] = useState<number>(0);
     // function findQuiz(): Quiz {
     //     const foundQuiz = quizzes.find(
@@ -39,6 +40,21 @@ export function Quizzer(): JSX.Element {
             quizzes.map((quiz: Quiz): Quiz => (quiz.id === id ? newQuiz : quiz))
         );
     }
+    function addQuestion(id: number) {
+        const foundQuiz = quizzes.find((quiz: Quiz): boolean => quiz.id === id);
+        if (foundQuiz === undefined) {
+            return;
+        }
+        const newQuestion: Question = { ...NEW_QUESTION, id: nextQuestionID };
+        const newQuiz = {
+            ...foundQuiz,
+            questions: [...foundQuiz.questions, newQuestion]
+        };
+        setNextQuestionID(nextQuestionID + 1);
+        setQuizzes(
+            quizzes.map((quiz: Quiz): Quiz => (quiz.id === id ? newQuiz : quiz))
+        );
+    }
 
     return (
         <div>
@@ -61,13 +77,20 @@ export function Quizzer(): JSX.Element {
                         )}
                         <Button
                             onClick={() => {
-                                const newQuiz = { ...NEW_QUIZ, id: nextQuizID };
+                                const newQuiz = {
+                                    ...NEW_QUIZ,
+                                    id: nextQuizID,
+                                    questions: [
+                                        { ...NEW_QUESTION, id: nextQuestionID }
+                                    ]
+                                };
                                 const modifiedQuizzes: Quiz[] = [
                                     ...quizzes,
                                     newQuiz
                                 ];
                                 setQuizzes(modifiedQuizzes);
                                 setNextQuizID(nextQuizID + 1);
+                                setNextQuestionID(nextQuestionID + 1);
                             }}
                         >
                             New Quiz
@@ -76,6 +99,7 @@ export function Quizzer(): JSX.Element {
                     <Col>
                         {mode !== null && (
                             <Button
+                                style={{ backgroundColor: "red" }}
                                 onClick={() => {
                                     setMode(null);
                                     setSelectedQuizId(0);
@@ -97,8 +121,10 @@ export function Quizzer(): JSX.Element {
                             selectedQuizId={selectedQuizID}
                             mode={mode}
                             selectedQuestion={selectedQuestion}
+                            setQuizzes={setQuizzes}
                             setSelectedQuestion={setSelectedQuestion}
                             setQuizInfo={editQuizInfo}
+                            addQuestion={addQuestion}
                         ></QuizEditView>
                     </Col>
                 </Row>

@@ -26,7 +26,10 @@ export function MCQuestionView({
                     {question.type === "multiple_choice_question" && (
                         <div>
                             <Form.Group controlId="userOptions">
-                                <Form.Label>{question.body}</Form.Label>
+                                <Form.Label>
+                                    <b>{question.name}: </b>
+                                    {question.body}
+                                </Form.Label>
                                 <Form.Select
                                     value={answer}
                                     onChange={updateAnswer}

@@ -7,11 +7,22 @@ export interface Quiz {
     description: string;
 }
 
-export const NEW_QUIZ = {
+export const NEW_QUIZ: Quiz = {
     id: 0,
     title: "New Quiz",
     description: "no description entered",
     questions: []
+};
+
+export const NEW_QUESTION: Question = {
+    id: 0,
+    name: "new Question",
+    body: "no body entered",
+    type: "short_answer_question",
+    options: [],
+    expected: "",
+    points: 1,
+    published: false
 };
 
 export const DEFAULT_QUIZZES: Quiz[] = [
