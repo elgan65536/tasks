@@ -19,7 +19,8 @@ export function QuizTakeView({
     selectedQuestion,
     setSelectedQuestion
 }: quizTakeViewProps): JSX.Element {
-    const [unpublishedVisible, setUnpublishedVisible] = useState<boolean>(true);
+    const [unpublishedVisible, setUnpublishedVisible] =
+        useState<boolean>(false);
     function findQuiz(): Quiz {
         const foundQuiz = quizzes.find(
             (quiz: Quiz): boolean => quiz.id === selectedQuizId
@@ -35,6 +36,7 @@ export function QuizTakeView({
                 <div>
                     <h3>Taking {findQuiz().title}</h3>
                     <Button
+                        data-testid={"Hide Unpublished Button"}
                         onClick={() =>
                             setUnpublishedVisible(!unpublishedVisible)
                         }
@@ -55,6 +57,7 @@ export function QuizTakeView({
                         unPublishedVisible={unpublishedVisible}
                     />
                     <Button
+                        data-testId={"Previous Button"}
                         onClick={() =>
                             setSelectedQuestion(selectedQuestion - 1)
                         }
@@ -63,6 +66,7 @@ export function QuizTakeView({
                         {"<-"} Previous Question
                     </Button>
                     <Button
+                        data-testId={"Next Button"}
                         onClick={() =>
                             setSelectedQuestion(selectedQuestion + 1)
                         }

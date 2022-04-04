@@ -43,4 +43,37 @@ describe("Quizzer Tests", () => {
         expect(screen.findByText("New Quiz")).toBeInTheDocument;
         expect(screen.findByText("no description entered")).toBeInTheDocument;
     });
+    test("multiple choice questions can exist", () => {
+        const take = screen.getByTestId("Math Quiz Take Button");
+        take.click();
+        expect(screen.findByRole("combobox")).toBeInTheDocument;
+        expect(screen.findByRole("textbox")).not.toBeInTheDocument;
+    });
+    test("short answer questions can exist", () => {
+        const take = screen.getByTestId("Math Quiz Take Button");
+        take.click();
+        const next = screen.getByTestId("Next Button");
+        next.click();
+        expect(screen.findByRole("textbox")).toBeInTheDocument;
+    });
+    test("unpublished questions are hidden by default", () => {
+        const take = screen.getByTestId("Math Quiz Take Button");
+        take.click();
+        const next = screen.getByTestId("Next Button");
+        next.click();
+        next.click();
+        expect(screen.findByText("this question is unPublished."))
+            .toBeInTheDocument;
+    });
+    test("unpublished questions can be shown", () => {
+        const take = screen.getByTestId("Math Quiz Take Button");
+        take.click();
+        const next = screen.getByTestId("Next Button");
+        next.click();
+        next.click();
+        const hide = screen.getByTestId("Hide Unpublished Button");
+        hide.click;
+        expect(screen.findByText("this question is unPublished.")).not
+            .toBeInTheDocument;
+    });
 });
