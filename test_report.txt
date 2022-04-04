@@ -7,12 +7,6 @@ PASS src/arrays.test.ts
 PASS src/objects.test.ts
 PASS src/components/StartAttempt.test.tsx
 PASS src/components/TwoDice.test.tsx
-PASS src/form-components/MultipleChoiceQuestion.test.tsx
-PASS src/bad-components/ChooseTeam.test.tsx
-PASS src/bad-components/DoubleHalf.test.tsx
-PASS src/functions.test.ts
-PASS src/form-components/CheckAnswer.test.tsx
-PASS src/form-components/EditMode.test.tsx
 
   ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
     Attempted to log "Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one. ".
@@ -42,6 +36,59 @@ PASS src/quizzer/Quizzer.test.tsx
       at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
       at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
 
+    console.error
+      Warning: React does not recognize the `data-testId` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at button
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at div
+          at div
+          at QuizTakeView (/home/runner/work/tasks/tasks/src/quizzer/QuizTakeView.tsx:16:5)
+          at div
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at div
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/Container.js:24:3
+          at div
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:10:35)
+
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+
+    console.error
+      Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:43:5)
+      at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
+      at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
+
+    console.error
+      Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at console.error (node_modules/@testing-library/react/dist/act-compat.js:55:34)
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:43:5)
+      at onDone (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1034:9)
+      at node_modules/react-dom/cjs/react-dom-test-utils.development.js:1073:13
+
+PASS src/form-components/MultipleChoiceQuestion.test.tsx
+PASS src/bad-components/ChooseTeam.test.tsx
+PASS src/bad-components/DoubleHalf.test.tsx
+PASS src/functions.test.ts
+PASS src/form-components/CheckAnswer.test.tsx
+PASS src/form-components/EditMode.test.tsx
 PASS src/components/ChangeType.test.tsx
 PASS src/components/CycleHoliday.test.tsx
 PASS src/form-components/GiveAttempts.test.tsx
@@ -54,7 +101,7 @@ PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   91.79 |    86.01 |    90.5 |   91.89 |                   
+All files                    |   86.11 |    84.47 |   86.66 |   85.99 |                   
  src                         |    98.4 |    94.59 |   97.14 |    98.3 |                   
   App.tsx                    |      60 |    66.66 |   33.33 |      60 | 33-75             
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
@@ -82,18 +129,19 @@ All files                    |   91.79 |    86.01 |    90.5 |   91.89 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |   64.28 |    61.53 |   58.06 |   64.81 |                   
-  MCQuestionView.tsx         |      75 |    71.42 |   66.66 |      75 | 20                
-  QuizEditView.tsx           |      50 |       75 |   42.85 |      50 | 31,36-39,63-71    
+ src/quizzer                 |      60 |    64.91 |   58.49 |    59.8 |                   
+  MCQuestionView.tsx         |      75 |    85.71 |   66.66 |      75 | 20                
+  QuestionEditView.tsx       |      35 |       25 |   45.45 |      35 | 38,46-107         
+  QuizEditView.tsx           |   46.15 |    42.85 |   46.66 |   46.15 | 37,42-81,135-143  
   QuizListView.tsx           |     100 |      100 |     100 |     100 |                   
-  QuizTakeView.tsx           |      60 |    63.63 |      50 |      60 | 28,39-67          
-  Quizzer.tsx                |   59.09 |       50 |   55.55 |      60 | 29-39,80-81       
-  SAQuestionView.tsx         |   66.66 |    42.85 |      50 |   66.66 | 20                
+  QuizTakeView.tsx           |      70 |    81.81 |   66.66 |      70 | 29,41-62          
+  Quizzer.tsx                |   69.69 |    58.33 |   66.66 |      70 | 30-40,46,104-105  
+  SAQuestionView.tsx         |   66.66 |    85.71 |      50 |   66.66 | 20                
   quiz.ts                    |     100 |      100 |     100 |     100 |                   
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 21 passed, 21 total
-Tests:       141 passed, 141 total
+Tests:       147 passed, 147 total
 Snapshots:   0 total
-Time:        13.209 s
+Time:        13.193 s
 Ran all test suites.
